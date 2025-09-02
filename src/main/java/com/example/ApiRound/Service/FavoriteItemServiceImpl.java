@@ -50,7 +50,7 @@ public class FavoriteItemServiceImpl implements FavoriteItemService {
     @Override
     public List<ListDto> getFavoritesByUserId(Long userId) {
         List<ListDto> favorites = favoriteItemMapper.getFavoritesByUserId(userId);
-        
+
         // 구글맵 API에서 사진 URL 가져오기
         for (ListDto favorite : favorites) {
             if (favorite.getCoordX() != null && favorite.getCoordY() != null) {
@@ -58,17 +58,17 @@ public class FavoriteItemServiceImpl implements FavoriteItemService {
                 favorite.setImageUrl(imageUrl);
             }
         }
-        
+
         return favorites;
     }
-    
+
     private String getGoogleMapsImageUrl(Double lat, Double lng, String name) {
         try {
             // 구글맵 Static Maps API를 사용하여 사진 URL 생성
             String googleMapsApiKey = "YOUR_GOOGLE_MAPS_API_KEY"; // 실제 API 키로 교체 필요
             String imageUrl = String.format(
-                "https://maps.googleapis.com/maps/api/staticmap?center=%f,%f&zoom=15&size=400x300&maptype=roadmap&markers=color:red|%f,%f&key=%s",
-                lat, lng, lat, lng, googleMapsApiKey
+                    "https://maps.googleapis.com/maps/api/staticmap?center=%f,%f&zoom=15&size=400x300&maptype=roadmap&markers=color:red|%f,%f&key=%s",
+                    lat, lng, lat, lng, googleMapsApiKey
             );
             return imageUrl;
         } catch (Exception e) {

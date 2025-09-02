@@ -2,9 +2,11 @@ package com.example.ApiRound.mapper;
 
 import com.example.ApiRound.dto.FavoriteItemDto;
 import com.example.ApiRound.dto.ListDto;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
+@Mapper
 public interface FavoriteItemMapper {
     int insertFavorite(FavoriteItemDto favorite);
 
