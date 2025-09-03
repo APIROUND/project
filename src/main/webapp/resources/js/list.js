@@ -114,8 +114,8 @@ function bindHospitalItemEvents() {
         console.log('병원 아이템 클릭됨, 상세 정보 표시 시작');
         selectHospital(item);
         if (item.classList.contains('active')) {
-                // 클릭 로그 전송 (컨텍스트 경로/CSRF 처리 포함)
-                logCompanyClick(item.dataset.itemId);
+            // 클릭 로그 전송 (컨텍스트 경로/CSRF 처리 포함)
+            logCompanyClick(item.dataset.itemId);
             showHospitalDetail(item);
         }
     });
