@@ -13,6 +13,7 @@
     <groupId>com.example</groupId>
     <artifactId>ApiRound</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>war</packaging>
     <name>ApiRound</name>
     <description>ApiRound Project</description>
     <url/>

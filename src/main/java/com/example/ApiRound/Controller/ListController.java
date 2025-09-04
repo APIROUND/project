@@ -22,6 +22,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.ApiRound.Service.ListService;
 import com.example.ApiRound.Service.ClickLogService;
 import com.example.ApiRound.dto.ListDto;
+import org.springframework.beans.factory.annotation.Value;
+
 
 @Controller
 @RequestMapping("/list") // URL 기본 prefix
@@ -30,10 +32,20 @@ public class ListController {
     private final ListService listService;
     private final ClickLogService clickLogService;
 
+    // ✅ application.properties 값 주입
+    @Value("${google.maps.api.key}")
+    private String googleMapsApiKey;
+
     @Autowired
     public ListController(ListService listService, ClickLogService clickLogService) {
         this.listService = listService;
         this.clickLogService = clickLogService;
+    }
+
+    // ✅ 컨트롤러의 모든 핸들러에 공통으로 모델 값 추가
+    @ModelAttribute("googleMapsApiKey")
+    public String exposeGoogleMapsApiKey() {
+        return googleMapsApiKey;
     }
 
     // 번역된 파라미터를 한국어로 변환하는 메서드
@@ -466,3 +478,4 @@ public class ListController {
         }
     }
 }
+
